@@ -1,0 +1,26 @@
+{
+  "name": "smartedu",
+  "version": "1.0.0",
+  "description": "education portal",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frknsprnl/SmartEdu.git"
+  },
+  "author": "frknsprnl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frknsprnl/SmartEdu/issues"
+  },
+  "homepage": "https://github.com/frknsprnl/SmartEdu#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
