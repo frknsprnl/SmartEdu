@@ -9,6 +9,13 @@ const courseRoute = require("./routes/courseRoute");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+mongoose.connect("mongodb://localhost/smartedu-db").then(() => {
+  console.log("db connected successfully");
+});
+
 // ROUTES
 app.use("/", pageRoute);
 app.use("/courses", courseRoute);
