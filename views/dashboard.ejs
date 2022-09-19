@@ -16,7 +16,7 @@
 	<%- include('partials/_navbar') %>
 
 	<!-- End header -->
-	
+	<% if (userIN) { %> 
 	<div class="all-title-box">
 		<div class="container text-center">
 			<h1>Dashboard<span class="m_1">Hey! <%= user.name %>.</span></h1>
@@ -107,7 +107,7 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->
-
+<% } %>
    <!-- start footer-->
    <%- include('partials/_footer') %>
    <!-- end footer -->
