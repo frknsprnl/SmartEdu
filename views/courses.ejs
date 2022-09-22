@@ -32,6 +32,23 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-9 blog-post-single">
+            <% if (flashMessages) { %>
+              <div class="col-lg-12">
+                
+                <% if(flashMessages.success) { %>
+                  <div class="alert alert-success">
+                    <%= flashMessages.success %>
+                  </div>
+                <% } %>  
+      
+                <% if(flashMessages.error) { %>
+                  <div class="alert alert-danger">
+                    <%= flashMessages.error %>
+                  </div>
+                <% } %> 
+              </div>
+
+            <% } %>
             <div class="row">
               <% for (let i = 0; i < courses.length; i++) { %>
               <div class="col-lg-6 col-md-6 col-12">

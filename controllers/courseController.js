@@ -3,20 +3,21 @@ const Course = require("../models/Course");
 const User = require("../models/User");
 
 exports.createCourse = async (req, res) => {
-  const course = await Course.create({
-    name: req.body.name,
-    description: req.body.description,
-    category: req.body.category,
-    user: req.session.UserID,
-  });
+  
   try {
-    res.status(201).redirect("/courses");
-  } catch {
-    res.status(404).json({
-      status: "fail",
-      error,
+    const course = await Course.create({
+      name: req.body.name,
+      description: req.body.description,
+      category: req.body.category,
+      user: req.session.UserID,
     });
+    req.flash('success', `Course: ${req.body.name} has been created successfully!`)
+    res.status(201).redirect("/courses");
+  } catch (err) {
+    req.flash('error', `Something happened! ${String(err).slice(0,60)}`)
+    res.status(400).redirect('/courses');
   }
+  
 };
 
 exports.getAllCourses = async (req, res) => {
