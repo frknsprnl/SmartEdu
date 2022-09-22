@@ -10,7 +10,7 @@ exports.createUser = async (req, res) => {
     res.status(201).redirect("/login");
   } catch (error) {
     const errors = validationResult(req);
-    
+
     for (let i = 0; i < errors.array().length; i++) {
       req.flash('error', `${errors.array()[i].msg}`)
     }
@@ -30,10 +30,14 @@ exports.loginUser = async (req, res) => {
           // USER SESSION
           req.session.UserID = user._id;
           res.status(200).redirect("/users/dashboard");
+        } else {
+          req.flash('error', "Your password is not valid!");
+          res.status(200).redirect("/login");
         }
       });
     } else {
-      res.status(400).send("Email or password is not valid.");
+      req.flash('error', "Your email is not valid!");
+      res.status(200).redirect("/login");
     }
   } catch (error) {
     res.status(404).json({
