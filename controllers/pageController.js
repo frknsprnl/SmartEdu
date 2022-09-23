@@ -1,8 +1,18 @@
 const nodemailer = require("nodemailer");
+const Course = require('../models/Course');
+const User = require('../models/User');
 require("dotenv").config();
 
-exports.getIndexPage = (req, res) => {
+exports.getIndexPage = async (req, res) => {
+  const courses = await Course.find().sort('-createdAt').limit(2).populate('user');
+  const totalCourses = await Course.find().countDocuments();
+  const totalStudents = await User.countDocuments({role: "student"})
+  const totalTeachers = await User.countDocuments({role: "teacher"})
   res.status(200).render("index", {
+    courses,
+    totalCourses,
+    totalStudents,
+    totalTeachers,
     page_name: "index",
   });
 };
