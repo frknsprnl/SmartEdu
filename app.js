@@ -11,8 +11,10 @@ const courseRoute = require("./routes/courseRoute");
 const categoryRoute = require("./routes/categoryRoute");
 const userRoute = require("./routes/userRoute");
 
+const mongoURL = `mongodb+srv://frknsprnl:${process.env.DB_PASS}@cluster0.mo9q5sn.mongodb.net/?retryWrites=true&w=majority`;
+
 // CONNECTION TO DB
-mongoose.connect("mongodb://localhost/smartedu-db").then(() => {
+mongoose.connect(mongoURL).then(() => {
   console.log("db connected successfully");
 });
 
@@ -32,7 +34,7 @@ app.use(
     secret: "my_keyboard_cat",
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: "mongodb://localhost/smartedu-db" }),
+    store: MongoStore.create({ mongoUrl: mongoURL}),
   })
 );
 app.use(flash());
