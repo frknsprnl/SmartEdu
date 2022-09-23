@@ -4,7 +4,7 @@
   "description": "education portal",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app"
+    "start": "node app"
   },
   "repository": {
     "type": "git",
