@@ -61,33 +61,39 @@
                     <%= course.description %>
                   </blockquote>
                 </div>
-                <% if (user.role === "student") { %>
                 <div class="d-flex justify-content-end">
-                  <% if (!user.courses.includes(course._id)) { %>
-                  <form action="/courses/enroll" method="POST">
-                    <input
-                      type="hidden"
-                      name="course_id"
-                      value="<%= course._id %>"
-                    />
-                    <button class="btn btn-lg btn-warning text-white">
-                      ENROLL
-                    </button>
-                  </form>
-                  <% } %> <% if (user.courses.includes(course._id)) { %>
-                  <form action="/courses/release" method="POST">
-                    <input
-                      type="hidden"
-                      name="course_id"
-                      value="<%= course._id %>"
-                    />
-                    <button class="btn btn-lg btn-warning text-white">
-                      RELEASE
-                    </button>
-                  </form>
+                  <% if (user) { %> 
+                    <% if (user.role === "student") { %>
+
+                      <% if (!user.courses.includes(course._id)) { %>
+                      <form action="/courses/enroll" method="POST">
+                        <input
+                          type="hidden"
+                          name="course_id"
+                          value="<%= course._id %>"
+                        />
+                        <button class="btn btn-lg btn-warning text-white">
+                          ENROLL
+                        </button>
+                      </form>
+                      <% } %> 
+                      
+                      <% if (user.courses.includes(course._id)) { %>
+                      <form action="/courses/release" method="POST">
+                        <input
+                          type="hidden"
+                          name="course_id"
+                          value="<%= course._id %>"
+                        />
+                        <button class="btn btn-lg btn-warning text-white">
+                          RELEASE
+                        </button>
+                      </form>
+                      <% } %>
+
+                    <% } %>
                   <% } %>
                 </div>
-                <% } %>
               </div>
             </div>
 
@@ -142,6 +148,7 @@
               </ul>
             </div>
           </div>
+
         </div>
         <!-- end row -->
       </div>
