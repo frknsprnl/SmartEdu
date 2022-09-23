@@ -18,7 +18,7 @@
   └───middlewares
   </pre>
 
-# 📚 Dependencies
+### 📚 Dependencies
 
 - Mongoose
 - Connect-mongo
@@ -33,11 +33,11 @@
 - Slugify
 - Bcrypt
 
-# 👨‍💻 devDependencies
+### 👨‍💻 devDependencies
 
 - Nodemon
 
-# ⚙️ Deployment
+### ⚙️ Deployment
 - Heroku CLI
 
  
