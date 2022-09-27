@@ -24,7 +24,9 @@ exports.getAllCourses = async (req, res) => {
   try {
     const categorySlug = req.query.categories;
     const query = req.query.search;
-
+    const page = req.query.page || 1;
+    const totalCourses = await Course.find().countDocuments();
+    const coursesPerPage = 4;
     const category = await Category.findOne({ slug: categorySlug });
 
     let filter = {};
@@ -49,6 +51,8 @@ exports.getAllCourses = async (req, res) => {
       ],
     })
       .sort("-createdAt")
+      .skip((page-1) * coursesPerPage)
+      .limit(coursesPerPage)
       .populate("user");
 
     const categories = await Category.find();
@@ -56,6 +60,8 @@ exports.getAllCourses = async (req, res) => {
     res.status(200).render("courses", {
       courses,
       categories,
+      current: page,
+      pages: Math.ceil(totalCourses / coursesPerPage),
       page_name: "courses",
     });
   } catch (error) {
