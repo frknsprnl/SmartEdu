@@ -25,7 +25,6 @@ exports.getAllCourses = async (req, res) => {
     const categorySlug = req.query.categories;
     const query = req.query.search;
     const page = req.query.page || 1;
-    const totalCourses = await Course.find().countDocuments();
     const coursesPerPage = 4;
     const category = await Category.findOne({ slug: categorySlug });
 
@@ -54,6 +53,8 @@ exports.getAllCourses = async (req, res) => {
       .skip((page-1) * coursesPerPage)
       .limit(coursesPerPage)
       .populate("user");
+
+    const totalCourses = courses.length + 1;
 
     const categories = await Category.find();
 
