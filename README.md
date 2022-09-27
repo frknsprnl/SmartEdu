@@ -4,7 +4,6 @@
 
 ### 📂 Folder Structure
 <pre>
-  ├───node_modules 
   ├───models
   ├───views
   │    └───partials
