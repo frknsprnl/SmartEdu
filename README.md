@@ -1,8 +1,6 @@
 # SmartEdu NodeJS Project
 
-<pre>Heroku free deploy kaldırıldığı için çalışmıyor. Vakit bulduğumda deployu taşıyacağım.</pre>
-
-### https://smartedufs.herokuapp.com/
+### <pre>https://smartedu.glitch.me/</pre>
 
 ### 📂 Folder Structure
 <pre>
@@ -39,7 +37,7 @@
 - Nodemon
 
 ### ⚙️ Deployment
-- Heroku CLI
+- Glitch.me
 
  
 
